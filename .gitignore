@@ -6,3 +6,6 @@ debug
 foo.*
 *.log
 data
+
+# MacOS indexing
+.DS_Store
