@@ -1,0 +1,35 @@
+[window]
+decorations = "Buttonless"
+
+opacity=0.9
+blur=true
+
+[window.padding]
+x = 8
+y = 8
+
+[font]
+size = 14
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+
+[keyboard]
+bindings = [
+  { key = "Right",     mods = "Alt",       chars = "\u001b[1;3C" },
+  { key = "Left",      mods = "Alt",       chars = "\u001b[1;3D" },
+  { key = "Up",        mods = "Alt",       chars = "\u001b[1;3A" },
+  { key = "Down",      mods = "Alt",       chars = "\u001b[1;3B" },
+  { key = "Up",        mods = "Alt|Shift", chars = "\u001b[1;4A" },
+  { key = "Down",      mods = "Alt|Shift", chars = "\u001b[1;4B" },
+  { key = "Back",      mods = "Alt",       chars = "\u001b\u007f" },
+]
+
+# Neotokyo color scheme
+[colors.primary]
+background = "0x1a1b26"  # deep midnight blue
+foreground = "0xc0caf5"  # soft blue-white
+
+# Using true colors
+[env]
+TERM = "xterm-256color"
