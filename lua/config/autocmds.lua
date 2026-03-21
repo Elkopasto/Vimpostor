@@ -10,10 +10,13 @@
 vim.api.nvim_create_autocmd({ "FileType", "BufWinEnter" }, {
   pattern = { "markdown", "*.md" },
   callback = function()
-    vim.opt_local.spell = true
-    vim.opt_local.spelllang = "en_us"
     vim.opt_local.wrap = true
     vim.opt_local.linebreak = true
-    vim.api.nvim_set_hl(0, "SpellBad", { undercurl = true, sp = "#f7768e" })
+    local notes_dir = vim.fn.expand("~/notes")
+    if vim.fn.expand("%:p"):find(notes_dir, 1, true) then
+      vim.opt_local.spell = true
+      vim.opt_local.spelllang = "en_us"
+      vim.api.nvim_set_hl(0, "SpellBad", { undercurl = true, sp = "#f7768e" })
+    end
   end,
 })
