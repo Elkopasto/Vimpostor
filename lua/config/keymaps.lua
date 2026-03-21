@@ -27,6 +27,23 @@ map("v", "<A-S-Up>", ":t'<-1<CR>gv", opts)
 map("i", "<A-S-Down>", "<Esc>yypgi", opts)
 map("i", "<A-S-Up>", "<Esc>yyPgi", opts)
 
+-- Notes
+local notes_dir = vim.fn.expand("~/notes")
+map("n", "<leader>nn", function()
+  vim.fn.mkdir(notes_dir, "p")
+  Snacks.picker.files({ cwd = notes_dir, title = "Notes" })
+end, { desc = "Find notes" })
+map("n", "<leader>ng", function()
+  Snacks.picker.grep({ cwd = notes_dir, title = "Search Notes" })
+end, { desc = "Grep notes" })
+map("n", "<leader>nN", function()
+  vim.fn.mkdir(notes_dir, "p")
+  local name = vim.fn.input("Note name: ")
+  if name ~= "" then
+    vim.cmd("edit " .. notes_dir .. "/" .. name .. ".md")
+  end
+end, { desc = "New note" })
+
 -- Move line/selection (Alt+Up/Down like VS Code)
 -- Normal mode: move current line
 map("n", "<A-Down>", ":m .+1<CR>==", opts)
