@@ -7,11 +7,13 @@
 -- Or remove existing autocmds by their group name (which is prefixed with `lazyvim_` for the defaults)
 -- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
 
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "markdown",
+vim.api.nvim_create_autocmd({ "FileType", "BufWinEnter" }, {
+  pattern = { "markdown", "*.md" },
   callback = function()
     vim.opt_local.spell = true
     vim.opt_local.spelllang = "en_us"
+    vim.opt_local.wrap = true
+    vim.opt_local.linebreak = true
     vim.api.nvim_set_hl(0, "SpellBad", { undercurl = true, sp = "#f7768e" })
   end,
 })
