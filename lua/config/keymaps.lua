@@ -43,6 +43,14 @@ map("n", "<leader>nN", function()
     vim.cmd("edit " .. notes_dir .. "/" .. name .. ".md")
   end
 end, { desc = "New note" })
+map("n", "<leader>ns", function()
+  vim.cmd("edit /tmp/scratch.md")
+end, { desc = "Scratch note" })
+map("n", "<leader>nS", function()
+  vim.fn.writefile({}, "/tmp/scratch.md")
+  vim.cmd("edit /tmp/scratch.md")
+  vim.cmd("checktime")
+end, { desc = "Wipe and open the scratch note" })
 
 -- Move line/selection (Alt+Up/Down like VS Code)
 -- Normal mode: move current line
